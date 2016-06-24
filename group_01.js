@@ -4,18 +4,19 @@ var boo = ["Boo", "11435", "54000", 3];
 var scout = ["Scout", "6243", "74750", 5];
 
 var employees = [atticus, jem, boo, scout];
-var stiArray = [];
 var bonus = 0;
 var newEmpArray = employees;
 
 for(var i = 0; i < employees.length; i++){
+  //employee name
   newEmpArray[i][0] = employees[i][0];
+  //bonus percentage
   newEmpArray[i][1] = sti(employees[i]);
-  newEmpArray[i][2] = parseInt(employees[i][2]) + (parseInt(employees[i][2]) * newEmpArray[i][1]);
-  newEmpArray[i][3] = Math.round(parseInt(employees[i][2]) * (newEmpArray[i][1] / 100));
+  // adjusted annual income + bonus
+  newEmpArray[i][2] =  typeof newEmpArray[i][1];
+  // total bonus rounded to nearest dollar
+  newEmpArray[i][3] = sti(employees[i]);
   console.log(newEmpArray[i]);
-
-
 }
 
 
@@ -35,6 +36,17 @@ function sti(emp){
     computeBonus(emp , 10);
     return bonus;
   }
+  console.log(employees[i][3]);
+}
+
+function computeBonus(emp , per){
+  bonus = checkTenure(emp);
+  console.log(bonus);
+  bonus += per + checkBaseSalary(emp);
+  console.log(bonus);
+  bonus = checkTotal(emp);
+  console.log(bonus);
+  return bonus;
 }
 
 function checkTenure(emp){
@@ -55,15 +67,9 @@ function checkBaseSalary(emp){
 
 function checkTotal(emp){
   if(bonus > 13){
-    bonus = 13;
+    return 13;
+  }else{
     return bonus;
   }
-    return bonus;
-}
 
-function computeBonus(emp , per){
-  bonus = checkTenure(emp);
-  bonus += per + checkBaseSalary(emp);
-  bonus = checkTotal(emp);
-  return bonus;
 }
