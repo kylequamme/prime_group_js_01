@@ -25,18 +25,15 @@ function sti(emp){
   bonus = 0;
   if(emp[3] <= 2){
     computeBonus(emp , 0);
-    return bonus;
   }else if(emp[3] === 3){
     computeBonus(emp , 4);
-    return bonus;
   }else if(emp[3] === 4){
     computeBonus(emp , 6);
-    return bonus;
   }else{
     computeBonus(emp , 10);
-    return bonus;
   }
   console.log(employees[i][3]);
+  return bonus;
 }
 
 function computeBonus(emp , per){
